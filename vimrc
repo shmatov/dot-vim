@@ -16,19 +16,26 @@ set scrolloff=5
 set t_Co=256
 set guifont=Consolas\ 13
 
+" Disable toolbar
 set guioptions-=T
+" Disable left scrollbar
 set guioptions-=l
 set guioptions-=L
+" Disable right scrollbar
 set guioptions-=r
 set guioptions-=R
+" Disable bottom scrollbar
 set guioptions-=b
+" Disable welcome screen
+set shortmess+=I
+
 
 set clipboard=unnamedplus
 
 set list listchars=tab:»·,trail:·
 
 if has("gui_running")
-  set lines=40 columns=90
+  set lines=45 columns=130
 endif
 
 " Softtabs, 2 spaces
@@ -57,10 +64,19 @@ nmap <silent> <F2> :NERDTreeToggle<CR>
 imap <silent> <F2> <ESC>:NERDTreeToggle<CR>
 vmap <silent> <F2> <ESC>:NERDTreeToggle<CR>
 
-set background=light
-colorscheme solarized
+Bundle "pangloss/vim-javascript"
+Bundle "jQuery"
+Bundle "troydm/easybuffer.vim"
+nmap <silent> <F3> :EasyBuffer<CR>
+imap <silent> <F3> <ESC>:EasyBuffer<CR>
+vmap <silent> <F3> <ESC>:EasyBuffer<CR>
+
+Bundle "scrooloose/nerdcommenter"
 
 filetype plugin indent on
+
+set background=light
+colorscheme solarized
 
 " Leader
 let mapleader = " "
