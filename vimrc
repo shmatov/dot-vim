@@ -72,6 +72,7 @@ imap <silent> <F3> <ESC>:EasyBuffer<CR>
 vmap <silent> <F3> <ESC>:EasyBuffer<CR>
 
 Bundle "scrooloose/nerdcommenter"
+Bundle "kien/ctrlp.vim"
 
 filetype plugin indent on
 
