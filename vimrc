@@ -57,6 +57,7 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 Bundle 'vim-ruby/vim-ruby'
+Bundle 'tpope/vim-endwise'
 Bundle 'altercation/vim-colors-solarized'
 
 Bundle 'scrooloose/nerdtree'
@@ -73,7 +74,12 @@ vmap <silent> <F3> <ESC>:EasyBuffer<CR>
 
 Bundle "scrooloose/nerdcommenter"
 Bundle "kien/ctrlp.vim"
+Bundle 'sjl/gundo.vim'
+Bundle 'Raimondi/delimitMate'
+"Bundle 'roman/golden-ratio'
 
+"Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+"set noshowmode
 filetype plugin indent on
 
 set background=light
