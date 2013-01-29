@@ -80,8 +80,9 @@ Bundle 'Raimondi/delimitMate'
 
 Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 
-"set noshowmode
 filetype plugin indent on
+
+set noshowmode
 
 set background=light
 colorscheme solarized
