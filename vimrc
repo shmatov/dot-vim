@@ -14,7 +14,7 @@ set numberwidth=5
 set cursorline
 set scrolloff=5
 set t_Co=256
-set guifont=Consolas\ 13
+set guifont=Consolas\ for\ Powerline\ 12
 
 " Disable toolbar
 set guioptions-=T
@@ -78,7 +78,8 @@ Bundle 'sjl/gundo.vim'
 Bundle 'Raimondi/delimitMate'
 "Bundle 'roman/golden-ratio'
 
-"Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+
 "set noshowmode
 filetype plugin indent on
 
