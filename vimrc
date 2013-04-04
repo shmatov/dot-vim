@@ -49,6 +49,8 @@ if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   syntax on
 endif
 
+
+"-------------------------------------------------------------------------------
 filetype off
 
 " Declare bundles are handled via Vundler
@@ -76,11 +78,16 @@ Bundle "scrooloose/nerdcommenter"
 Bundle "kien/ctrlp.vim"
 Bundle 'sjl/gundo.vim'
 Bundle 'Raimondi/delimitMate'
-"Bundle 'roman/golden-ratio'
+Bundle 'maxbrunsfeld/vim-yankstack'
+let g:yankstack_map_keys = 0
+nmap <leader>p <Plug>yankstack_substitute_older_paste
+nmap <leader>P <Plug>yankstack_substitute_newer_paste
 
 Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 
 filetype plugin indent on
+"-------------------------------------------------------------------------------
+
 
 set noshowmode
 
