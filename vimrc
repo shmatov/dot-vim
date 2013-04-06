@@ -79,15 +79,16 @@ Bundle "kien/ctrlp.vim"
 Bundle 'sjl/gundo.vim'
 Bundle 'Raimondi/delimitMate'
 Bundle 'maxbrunsfeld/vim-yankstack'
-let g:yankstack_map_keys = 0
-nmap <leader>p <Plug>yankstack_substitute_older_paste
-nmap <leader>P <Plug>yankstack_substitute_newer_paste
 
 Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 
 filetype plugin indent on
 "-------------------------------------------------------------------------------
+let NERDTreeWinSize = 25
 
+let g:yankstack_map_keys = 0
+nmap <leader>p <Plug>yankstack_substitute_older_paste
+nmap <leader>P <Plug>yankstack_substitute_newer_paste
 
 set noshowmode
 
