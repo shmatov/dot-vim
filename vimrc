@@ -67,20 +67,23 @@ nmap <silent> <F2> :NERDTreeToggle<CR>
 imap <silent> <F2> <ESC>:NERDTreeToggle<CR>
 vmap <silent> <F2> <ESC>:NERDTreeToggle<CR>
 
-Bundle "pangloss/vim-javascript"
-Bundle "jQuery"
-Bundle "troydm/easybuffer.vim"
+Bundle 'pangloss/vim-javascript'
+Bundle 'jQuery'
+Bundle 'troydm/easybuffer.vim'
 nmap <silent> <F3> :EasyBuffer<CR>
 imap <silent> <F3> <ESC>:EasyBuffer<CR>
 vmap <silent> <F3> <ESC>:EasyBuffer<CR>
 
-Bundle "scrooloose/nerdcommenter"
-Bundle "kien/ctrlp.vim"
+Bundle 'mattn/zencoding-vim'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'kien/ctrlp.vim'
 Bundle 'sjl/gundo.vim'
 Bundle 'Raimondi/delimitMate'
 Bundle 'maxbrunsfeld/vim-yankstack'
 
 Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Bundle 'ervandew/supertab'
+Bundle 'godlygeek/tabular'
 
 filetype plugin indent on
 "-------------------------------------------------------------------------------
