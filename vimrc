@@ -14,7 +14,7 @@ set numberwidth=5
 set cursorline
 set scrolloff=5
 set t_Co=256
-set guifont=Consolas\ for\ Powerline\ 12
+set guifont=Consolas\ for\ Powerline\ 13
 
 " Disable toolbar
 set guioptions-=T
@@ -32,10 +32,10 @@ set shortmess+=I
 
 set clipboard=unnamedplus
 
-set list listchars=tab:»·,trail:·
+set listchars=tab:▸·,eol:¬
 
 if has("gui_running")
-  set lines=45 columns=130
+  set lines=40 columns=90
 endif
 
 " Softtabs, 2 spaces
@@ -49,7 +49,6 @@ if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   syntax on
 endif
 
-
 "-------------------------------------------------------------------------------
 filetype off
 
@@ -59,8 +58,16 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 Bundle 'vim-ruby/vim-ruby'
+Bundle 'tpope/vim-rvm'
+Bundle 'tpope/vim-ragtag'
 Bundle 'tpope/vim-endwise'
+
+" Colorschemes
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'morhetz/gruvbox'
+Bundle 'zeis/vim-kolor'
+Bundle 'nanotech/jellybeans.vim'
+Bundle 'chriskempson/base16-vim'
 
 Bundle 'scrooloose/nerdtree'
 nmap <silent> <F2> :NERDTreeToggle<CR>
@@ -69,6 +76,7 @@ vmap <silent> <F2> <ESC>:NERDTreeToggle<CR>
 
 Bundle 'pangloss/vim-javascript'
 Bundle 'jQuery'
+Bundle 'sunaku/vim-ruby-minitest'
 Bundle 'troydm/easybuffer.vim'
 nmap <silent> <F3> :EasyBuffer<CR>
 imap <silent> <F3> <ESC>:EasyBuffer<CR>
@@ -80,6 +88,7 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'sjl/gundo.vim'
 Bundle 'Raimondi/delimitMate'
 Bundle 'maxbrunsfeld/vim-yankstack'
+Bundle 'tpope/vim-surround'
 
 Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'ervandew/supertab'
@@ -95,8 +104,8 @@ nmap <leader>P <Plug>yankstack_substitute_newer_paste
 
 set noshowmode
 
-set background=light
-colorscheme solarized
+set background=dark
+colorscheme base16-default
 
 " Leader
 let mapleader = " "
