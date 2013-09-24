@@ -14,7 +14,7 @@ set numberwidth=5
 set cursorline
 set scrolloff=5
 set t_Co=256
-set guifont=Consolas\ for\ Powerline\ 13
+set guifont=Menlo\ for\ Powerline:h16
 
 " Disable toolbar
 set guioptions-=T
@@ -30,7 +30,7 @@ set guioptions-=b
 set shortmess+=I
 
 
-set clipboard=unnamedplus
+set clipboard=unnamed
 
 set listchars=tab:▸·,eol:¬
 
@@ -82,7 +82,7 @@ nmap <silent> <F3> :EasyBuffer<CR>
 imap <silent> <F3> <ESC>:EasyBuffer<CR>
 vmap <silent> <F3> <ESC>:EasyBuffer<CR>
 
-Bundle 'mattn/zencoding-vim'
+Bundle 'mattn/emmet-vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'kien/ctrlp.vim'
 Bundle 'sjl/gundo.vim'
@@ -94,6 +94,12 @@ Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'ervandew/supertab'
 Bundle 'godlygeek/tabular'
 
+" Snipmate
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
+Bundle 'garbas/vim-snipmate'
+Bundle 'honza/vim-snippets'
+
 filetype plugin indent on
 "-------------------------------------------------------------------------------
 let NERDTreeWinSize = 25
@@ -101,6 +107,7 @@ let NERDTreeWinSize = 25
 let g:yankstack_map_keys = 0
 nmap <leader>p <Plug>yankstack_substitute_older_paste
 nmap <leader>P <Plug>yankstack_substitute_newer_paste
+
 
 set noshowmode
 
