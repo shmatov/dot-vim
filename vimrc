@@ -16,6 +16,8 @@ set scrolloff=5
 set t_Co=256
 set guifont=Menlo\ for\ Powerline:h16
 
+set fileencodings=utf-8,cp1251
+
 " Disable toolbar
 set guioptions-=T
 " Disable left scrollbar
@@ -49,7 +51,8 @@ if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   syntax on
 endif
 
-"-------------------------------------------------------------------------------
+"                                                                      <Bundles>
+"===============================================================================
 filetype off
 
 " Declare bundles are handled via Vundler
@@ -57,62 +60,78 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
+
+"                                                                <Bundles|Ruby/>
+"-------------------------------------------------------------------------------
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rvm'
 Bundle 'tpope/vim-ragtag'
 Bundle 'tpope/vim-endwise'
+Bundle 'sunaku/vim-ruby-minitest'
 
-" Colorschemes
+"                                                              <Bundles|Python/>
+"-------------------------------------------------------------------------------
+Bundle 'davidhalter/jedi-vim'
+let g:jedi#use_tabs_not_buffers = 0
+let g:jedi#popup_on_dot = 0
+let g:jedi#show_call_signatures = 0
+autocmd FileType python setlocal completeopt-=preview
+
+"                                                          <Bundles|JavaScript/>
+"-------------------------------------------------------------------------------
+Bundle 'pangloss/vim-javascript'
+Bundle 'jQuery'
+
+"                                                                 <Bundles|Web/>
+"-------------------------------------------------------------------------------
+Bundle 'othree/html5.vim'
+Bundle 'slim-template/vim-slim'
+Bundle 'groenewege/vim-less'
+Bundle 'mattn/emmet-vim'
+
+"                                                        <Bundles|Colorschemes/>
+"-------------------------------------------------------------------------------
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'morhetz/gruvbox'
-Bundle 'zeis/vim-kolor'
-Bundle 'nanotech/jellybeans.vim'
 Bundle 'chriskempson/base16-vim'
 
+"                                                               <Bundles|Tools/>
+"-------------------------------------------------------------------------------
+Bundle 'sjl/gundo.vim'
+Bundle 'Raimondi/delimitMate'
+"Bundle 'maxbrunsfeld/vim-yankstack'
+"Bundle 'tpope/vim-surround'
+Bundle 'kien/ctrlp.vim'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'ervandew/supertab'
+Bundle 'godlygeek/tabular'
 Bundle 'scrooloose/nerdtree'
+let NERDTreeWinSize = 25
 nmap <silent> <F2> :NERDTreeToggle<CR>
 imap <silent> <F2> <ESC>:NERDTreeToggle<CR>
 vmap <silent> <F2> <ESC>:NERDTreeToggle<CR>
-
-Bundle 'pangloss/vim-javascript'
-Bundle 'jQuery'
-Bundle 'sunaku/vim-ruby-minitest'
-Bundle 'troydm/easybuffer.vim'
-nmap <silent> <F3> :EasyBuffer<CR>
-imap <silent> <F3> <ESC>:EasyBuffer<CR>
-vmap <silent> <F3> <ESC>:EasyBuffer<CR>
-
-Bundle 'mattn/emmet-vim'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'kien/ctrlp.vim'
-Bundle 'sjl/gundo.vim'
-Bundle 'Raimondi/delimitMate'
-Bundle 'maxbrunsfeld/vim-yankstack'
-Bundle 'tpope/vim-surround'
-
 Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-Bundle 'ervandew/supertab'
-Bundle 'godlygeek/tabular'
-
-" Snipmate
+let g:Powerline_symbols='fancy'
+Bundle 'fholgado/minibufexpl.vim'
+nmap <silent> <F3> :MBEToggle<CR>
+imap <silent> <F3> <ESC>:MBEToggle<CR>
+vmap <silent> <F3> <ESC>:MBEToggle<CR>
+"Bundle 'troydm/easybuffer.vim'
+"nmap <silent> <F3> :EasyBuffer<CR>
+"imap <silent> <F3> <ESC>:EasyBuffer<CR>
+"vmap <silent> <F3> <ESC>:EasyBuffer<CR>
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
 Bundle 'garbas/vim-snipmate'
 Bundle 'honza/vim-snippets'
 
 filetype plugin indent on
-"-------------------------------------------------------------------------------
-let NERDTreeWinSize = 25
-
-let g:yankstack_map_keys = 0
-nmap <leader>p <Plug>yankstack_substitute_older_paste
-nmap <leader>P <Plug>yankstack_substitute_newer_paste
-
+"                                                                     </Bundles>
+"===============================================================================
 
 set noshowmode
 
 set background=dark
-colorscheme base16-default
+colorscheme base16-tomorrow
 
 " Leader
 let mapleader = " "
