@@ -14,7 +14,7 @@ set numberwidth=5
 set cursorline
 set scrolloff=5
 set t_Co=256
-set guifont=Menlo\ for\ Powerline:h16
+set guifont=Menlo\ for\ Powerline:h15
 
 set fileencodings=utf-8,cp1251
 
@@ -31,19 +31,23 @@ set guioptions-=b
 " Disable welcome screen
 set shortmess+=I
 
+set visualbell
 
 set clipboard=unnamed
 
 set listchars=tab:▸·,eol:¬
 
-if has("gui_running")
-  set lines=40 columns=90
-endif
+"if has("gui_running")
+  "set lines=40 columns=90
+"endif
 
 " Softtabs, 2 spaces
 set tabstop=2
 set shiftwidth=2
 set expandtab
+
+autocmd Filetype python setlocal tabstop=4 shiftwidth=4
+autocmd Filetype javascript setlocal tabstop=4 shiftwidth=4
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -55,23 +59,23 @@ endif
 "===============================================================================
 filetype off
 
-" Declare bundles are handled via Vundler
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#begin()
 
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
 "                                                                <Bundles|Ruby/>
 "-------------------------------------------------------------------------------
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'tpope/vim-rvm'
-Bundle 'tpope/vim-ragtag'
-Bundle 'tpope/vim-endwise'
-Bundle 'sunaku/vim-ruby-minitest'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-rvm'
+Plugin 'tpope/vim-ragtag'
+Plugin 'tpope/vim-endwise'
+Plugin 'sunaku/vim-ruby-minitest'
 
 "                                                              <Bundles|Python/>
 "-------------------------------------------------------------------------------
-Bundle 'davidhalter/jedi-vim'
+Plugin 'hynek/vim-python-pep8-indent'
+Plugin 'davidhalter/jedi-vim'
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#popup_on_dot = 0
 let g:jedi#show_call_signatures = 0
@@ -79,51 +83,71 @@ autocmd FileType python setlocal completeopt-=preview
 
 "                                                          <Bundles|JavaScript/>
 "-------------------------------------------------------------------------------
-Bundle 'pangloss/vim-javascript'
-Bundle 'jQuery'
+"Plugin 'mxw/vim-jsx'
+Plugin 'pangloss/vim-javascript'
+Plugin 'jQuery'
 
 "                                                                 <Bundles|Web/>
 "-------------------------------------------------------------------------------
-Bundle 'othree/html5.vim'
-Bundle 'slim-template/vim-slim'
-Bundle 'groenewege/vim-less'
-Bundle 'mattn/emmet-vim'
+Plugin 'othree/html5.vim'
+Plugin 'slim-template/vim-slim'
+Plugin 'groenewege/vim-less'
+Plugin 'wavded/vim-stylus'
+Plugin 'mattn/emmet-vim'
 
 "                                                        <Bundles|Colorschemes/>
 "-------------------------------------------------------------------------------
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'chriskempson/base16-vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'chriskempson/base16-vim'
 
 "                                                               <Bundles|Tools/>
 "-------------------------------------------------------------------------------
-Bundle 'sjl/gundo.vim'
-Bundle 'Raimondi/delimitMate'
-"Bundle 'maxbrunsfeld/vim-yankstack'
-"Bundle 'tpope/vim-surround'
-Bundle 'kien/ctrlp.vim'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'ervandew/supertab'
-Bundle 'godlygeek/tabular'
-Bundle 'scrooloose/nerdtree'
+Plugin 'sjl/gundo.vim'
+Plugin 'Raimondi/delimitMate'
+"Plugin 'maxbrunsfeld/vim-yankstack'
+"Plugin 'tpope/vim-surround'
+
+Plugin 'kien/ctrlp.vim'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  'build\|node_modules\|DS_Store\|git'
+  \ }
+
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'ervandew/supertab'
+Plugin 'godlygeek/tabular'
+Plugin 'scrooloose/nerdtree'
 let NERDTreeWinSize = 25
 nmap <silent> <F2> :NERDTreeToggle<CR>
 imap <silent> <F2> <ESC>:NERDTreeToggle<CR>
 vmap <silent> <F2> <ESC>:NERDTreeToggle<CR>
-Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-let g:Powerline_symbols='fancy'
-Bundle 'fholgado/minibufexpl.vim'
+
+Plugin 'bling/vim-airline'
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline_powerline_fonts = 1
+
+Plugin 'fholgado/minibufexpl.vim'
+let g:miniBufExplorerAutoStart = 0
 nmap <silent> <F3> :MBEToggle<CR>
 imap <silent> <F3> <ESC>:MBEToggle<CR>
 vmap <silent> <F3> <ESC>:MBEToggle<CR>
-"Bundle 'troydm/easybuffer.vim'
+nmap <silent> <D-{> <ESC>:MBEbp<CR>
+imap <silent> <D-{> <ESC>:MBEbp<CR>
+vmap <silent> <D-{> <ESC>:MBEbp<CR>
+nmap <silent> <D-}> <ESC>:MBEbn<CR>
+imap <silent> <D-}> <ESC>:MBEbn<CR>
+vmap <silent> <D-}> <ESC>:MBEbn<CR>
+"Plugin 'troydm/easybuffer.vim'
 "nmap <silent> <F3> :EasyBuffer<CR>
 "imap <silent> <F3> <ESC>:EasyBuffer<CR>
 "vmap <silent> <F3> <ESC>:EasyBuffer<CR>
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-Bundle 'garbas/vim-snipmate'
-Bundle 'honza/vim-snippets'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
 
+Plugin 'wting/rust.vim'
+
+call vundle#end()
 filetype plugin indent on
 "                                                                     </Bundles>
 "===============================================================================
@@ -132,6 +156,7 @@ set noshowmode
 
 set background=dark
 colorscheme base16-tomorrow
+"let base16colorspace=256
 
 " Leader
 let mapleader = " "
