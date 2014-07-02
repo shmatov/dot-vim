@@ -118,6 +118,7 @@ Plugin 'ervandew/supertab'
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 Plugin 'godlygeek/tabular'
 Plugin 'scrooloose/nerdtree'
+let NERDTreeIgnore = ['\.pyc$']
 let NERDTreeWinSize = 25
 nmap <silent> <F2> :NERDTreeToggle<CR>
 imap <silent> <F2> <ESC>:NERDTreeToggle<CR>
