@@ -55,7 +55,7 @@ if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   syntax on
 endif
 
-"                                                                      <Bundles>
+"                                                                      <Plugins>
 "===============================================================================
 filetype off
 
@@ -64,7 +64,7 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 
-"                                                                <Bundles|Ruby/>
+"                                                                <Plugins|Ruby/>
 "-------------------------------------------------------------------------------
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-rvm'
@@ -72,7 +72,7 @@ Plugin 'tpope/vim-ragtag'
 Plugin 'tpope/vim-endwise'
 Plugin 'sunaku/vim-ruby-minitest'
 
-"                                                              <Bundles|Python/>
+"                                                              <Plugins|Python/>
 "-------------------------------------------------------------------------------
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'hynek/vim-python-pep8-indent'
@@ -82,13 +82,13 @@ let g:jedi#popup_on_dot = 0
 let g:jedi#show_call_signatures = 0
 autocmd FileType python setlocal completeopt-=preview
 
-"                                                          <Bundles|JavaScript/>
+"                                                          <Plugins|JavaScript/>
 "-------------------------------------------------------------------------------
 "Plugin 'mxw/vim-jsx'
 Plugin 'pangloss/vim-javascript'
 Plugin 'jQuery'
 
-"                                                                 <Bundles|Web/>
+"                                                                 <Plugins|Web/>
 "-------------------------------------------------------------------------------
 Plugin 'othree/html5.vim'
 Plugin 'slim-template/vim-slim'
@@ -96,12 +96,12 @@ Plugin 'groenewege/vim-less'
 Plugin 'wavded/vim-stylus'
 Plugin 'mattn/emmet-vim'
 
-"                                                        <Bundles|Colorschemes/>
+"                                                        <Plugins|Colorschemes/>
 "-------------------------------------------------------------------------------
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'chriskempson/base16-vim'
 
-"                                                               <Bundles|Tools/>
+"                                                               <Plugins|Tools/>
 "-------------------------------------------------------------------------------
 Plugin 'sjl/gundo.vim'
 Plugin 'Raimondi/delimitMate'
@@ -152,7 +152,7 @@ Plugin 'wting/rust.vim'
 
 call vundle#end()
 filetype plugin indent on
-"                                                                     </Bundles>
+"                                                                     </Plugins>
 "===============================================================================
 
 set noshowmode
