@@ -1,2 +1,2 @@
-Vundle install
-`$ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle`
+1. Run: `bash ~/.vim/install.sh`
+2. Enjoy! :)

@@ -37,9 +37,9 @@ set clipboard=unnamed
 
 set listchars=tab:▸·,eol:¬
 
-"if has("gui_running")
-  "set lines=40 columns=90
-"endif
+if has("gui_running")
+  set lines=40 columns=90
+endif
 
 " Softtabs, 2 spaces
 set tabstop=2
@@ -74,6 +74,7 @@ Plugin 'sunaku/vim-ruby-minitest'
 
 "                                                              <Bundles|Python/>
 "-------------------------------------------------------------------------------
+Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'davidhalter/jedi-vim'
 let g:jedi#use_tabs_not_buffers = 0
@@ -114,6 +115,7 @@ let g:ctrlp_custom_ignore = {
 
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'ervandew/supertab'
+let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 Plugin 'godlygeek/tabular'
 Plugin 'scrooloose/nerdtree'
 let NERDTreeWinSize = 25
