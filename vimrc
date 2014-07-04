@@ -110,7 +110,8 @@ Plugin 'Raimondi/delimitMate'
 
 Plugin 'kien/ctrlp.vim'
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  'build\|node_modules\|DS_Store\|git'
+  \ 'dir':  'build\|node_modules\|DS_Store\|git',
+  \ 'file': '\.pyc$'
   \ }
 
 Plugin 'scrooloose/nerdcommenter'
@@ -147,6 +148,7 @@ Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
+Plugin 'Lokaltog/vim-easymotion'
 
 Plugin 'wting/rust.vim'
 
