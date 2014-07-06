@@ -2,7 +2,7 @@ set nocompatible
 set history=100
 set ruler
 set showcmd
-set hlsearch
+set nohlsearch
 set incsearch
 set laststatus=2
 
@@ -82,11 +82,6 @@ Plugin 'sunaku/vim-ruby-minitest'
 "-------------------------------------------------------------------------------
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'hynek/vim-python-pep8-indent'
-Plugin 'davidhalter/jedi-vim'
-let g:jedi#use_tabs_not_buffers = 0
-let g:jedi#popup_on_dot = 0
-let g:jedi#show_call_signatures = 0
-autocmd FileType python setlocal completeopt-=preview
 
 "                                                          <Plugins|JavaScript/>
 "-------------------------------------------------------------------------------
@@ -121,6 +116,17 @@ let g:ctrlp_custom_ignore = {
   \ }
 
 Plugin 'Valloric/YouCompleteMe'
+nnoremap <leader>g :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>d :YcmCompleter GoToDeclaration<CR>
+Plugin 'davidhalter/jedi-vim'
+let g:jedi#completions_enabled = 0
+let g:jedi#show_call_signatures = "1"
+let g:jedi#documentation_command = "K"
+let g:jedi#usages_command = "<leader>n"
+let g:jedi#rename_command = "<leader>r"
+let g:jedi#goto_assignments_command = ""
+let g:jedi#goto_definitions_command = ""
+
 
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'godlygeek/tabular'
@@ -180,3 +186,4 @@ nnoremap <Left> :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
+
