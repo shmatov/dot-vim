@@ -152,8 +152,6 @@ vmap <silent> <D-}> <ESC>:MBEbn<CR>
 "vmap <silent> <F3> <ESC>:EasyBuffer<CR>
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
-Plugin 'honza/vim-snippets'
 Plugin 'Lokaltog/vim-easymotion'
 
 Plugin 'wting/rust.vim'
