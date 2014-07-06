@@ -120,6 +120,8 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\.pyc$'
   \ }
 
+Plugin 'Valloric/YouCompleteMe'
+
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'godlygeek/tabular'
 Plugin 'scrooloose/nerdtree'
