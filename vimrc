@@ -1,12 +1,18 @@
 set nocompatible
-set nobackup
-set nowritebackup
-set noswapfile
 set history=100
 set ruler
 set showcmd
+set hlsearch
 set incsearch
 set laststatus=2
+
+"set nobackup
+"set nowritebackup
+set undofile
+set undodir=~/.vim/undodir
+set undolevels=1000
+set undoreload=10000
+set noswapfile
 
 set number
 set numberwidth=5
