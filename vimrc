@@ -121,8 +121,6 @@ let g:ctrlp_custom_ignore = {
   \ }
 
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'ervandew/supertab'
-let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 Plugin 'godlygeek/tabular'
 Plugin 'scrooloose/nerdtree'
 let NERDTreeIgnore = ['\.pyc$']
