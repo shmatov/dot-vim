@@ -126,6 +126,7 @@ let g:jedi#usages_command = "<leader>n"
 let g:jedi#rename_command = "<leader>r"
 let g:jedi#goto_assignments_command = ""
 let g:jedi#goto_definitions_command = ""
+autocmd FileType python setlocal completeopt-=preview
 
 
 Plugin 'scrooloose/nerdcommenter'
