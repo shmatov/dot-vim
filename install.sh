@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 mkdir ~/.vim/undodir
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
