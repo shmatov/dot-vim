@@ -115,17 +115,18 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\.pyc$'
   \ }
 
-Plugin 'Valloric/YouCompleteMe'
-nnoremap <leader>g :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>d :YcmCompleter GoToDeclaration<CR>
+"Plugin 'Valloric/YouCompleteMe'
+"nnoremap <leader>g :YcmCompleter GoToDefinition<CR>
+"nnoremap <leader>d :YcmCompleter GoToDeclaration<CR>
 Plugin 'davidhalter/jedi-vim'
-let g:jedi#completions_enabled = 0
-let g:jedi#show_call_signatures = "1"
+let g:jedi#completions_enabled = 1
+let g:jedi#show_call_signatures = 0
 let g:jedi#documentation_command = "K"
 let g:jedi#usages_command = "<leader>n"
 let g:jedi#rename_command = "<leader>r"
-let g:jedi#goto_assignments_command = ""
-let g:jedi#goto_definitions_command = ""
+let g:jedi#goto_assignments_command = "<leader>g"
+let g:jedi#goto_definitions_command = "<leader>d"
+let g:jedi#use_tabs_not_buffers = 0
 autocmd FileType python setlocal completeopt-=preview
 
 
@@ -142,23 +143,12 @@ Plugin 'bling/vim-airline'
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline_powerline_fonts = 1
 
-Plugin 'fholgado/minibufexpl.vim'
-let g:miniBufExplorerAutoStart = 0
-nmap <silent> <F3> :MBEToggle<CR>
-imap <silent> <F3> <ESC>:MBEToggle<CR>
-vmap <silent> <F3> <ESC>:MBEToggle<CR>
-nmap <silent> <D-{> <ESC>:MBEbp<CR>
-imap <silent> <D-{> <ESC>:MBEbp<CR>
-vmap <silent> <D-{> <ESC>:MBEbp<CR>
-nmap <silent> <D-}> <ESC>:MBEbn<CR>
-imap <silent> <D-}> <ESC>:MBEbn<CR>
-vmap <silent> <D-}> <ESC>:MBEbn<CR>
-"Plugin 'troydm/easybuffer.vim'
-"nmap <silent> <F3> :EasyBuffer<CR>
-"imap <silent> <F3> <ESC>:EasyBuffer<CR>
-"vmap <silent> <F3> <ESC>:EasyBuffer<CR>
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
+Plugin 'jeetsukumaran/vim-buffergator'
+let g:buffergator_viewport_split_policy='T'
+let g:buffergator_autoexpand_on_split=0
+nmap <silent> <F3> :BuffergatorToggle<CR>
+imap <silent> <F3> <ESC>:BuffergatorToggle<CR>
+vmap <silent> <F3> <ESC>:BuffergatorToggle<CR>
 Plugin 'Lokaltog/vim-easymotion'
 
 Plugin 'wting/rust.vim'
