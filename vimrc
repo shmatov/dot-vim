@@ -115,6 +115,8 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\.pyc$'
   \ }
 
+Plugin 'rking/ag.vim'
+
 "Plugin 'Valloric/YouCompleteMe'
 "nnoremap <leader>g :YcmCompleter GoToDefinition<CR>
 "nnoremap <leader>d :YcmCompleter GoToDeclaration<CR>
