@@ -7,7 +7,7 @@ set incsearch
 set laststatus=2
 
 "set nobackup
-"set nowritebackup
+set nowritebackup
 set undofile
 set undodir=~/.vim/undodir
 set undolevels=1000
@@ -54,6 +54,7 @@ set expandtab
 
 autocmd Filetype python setlocal tabstop=4 shiftwidth=4
 autocmd Filetype javascript setlocal tabstop=4 shiftwidth=4
+autocmd Filetype html setlocal tabstop=4 shiftwidth=4
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -96,11 +97,13 @@ Plugin 'slim-template/vim-slim'
 Plugin 'groenewege/vim-less'
 Plugin 'wavded/vim-stylus'
 Plugin 'mattn/emmet-vim'
+Plugin 'tpope/vim-haml'
 
 "                                                        <Plugins|Colorschemes/>
 "-------------------------------------------------------------------------------
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'chriskempson/base16-vim'
+Plugin 'morhetz/gruvbox'
 
 "                                                               <Plugins|Tools/>
 "-------------------------------------------------------------------------------
@@ -163,6 +166,7 @@ filetype plugin indent on
 set noshowmode
 
 set background=dark
+"colorscheme solarized
 colorscheme base16-tomorrow
 "let base16colorspace=256
 
@@ -179,4 +183,3 @@ nnoremap <Left> :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
-
