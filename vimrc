@@ -74,10 +74,8 @@ Plugin 'gmarik/Vundle.vim'
 "                                                                <Plugins|Ruby/>
 "-------------------------------------------------------------------------------
 Plugin 'vim-ruby/vim-ruby'
-Plugin 'tpope/vim-rvm'
 Plugin 'tpope/vim-ragtag'
 Plugin 'tpope/vim-endwise'
-Plugin 'sunaku/vim-ruby-minitest'
 
 "                                                              <Plugins|Python/>
 "-------------------------------------------------------------------------------
