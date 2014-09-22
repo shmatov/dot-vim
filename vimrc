@@ -163,10 +163,8 @@ filetype plugin indent on
 
 set noshowmode
 
-set background=dark
-"colorscheme solarized
-colorscheme base16-tomorrow
-"let base16colorspace=256
+set background=light
+colorscheme solarized
 
 " Leader
 let mapleader = " "
