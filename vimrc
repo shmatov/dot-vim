@@ -69,8 +69,7 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin()
 
-Plugin 'gmarik/Vundle.vim'
-
+Plugin 'gmarik/Vundle.vim' 
 "                                                                <Plugins|Ruby/>
 "-------------------------------------------------------------------------------
 Plugin 'vim-ruby/vim-ruby'
@@ -118,18 +117,18 @@ let g:ctrlp_custom_ignore = {
 
 Plugin 'rking/ag.vim'
 
-"Plugin 'Valloric/YouCompleteMe'
-"nnoremap <leader>g :YcmCompleter GoToDefinition<CR>
-"nnoremap <leader>d :YcmCompleter GoToDeclaration<CR>
-Plugin 'davidhalter/jedi-vim'
-let g:jedi#completions_enabled = 1
-let g:jedi#show_call_signatures = 0
-let g:jedi#documentation_command = "K"
-let g:jedi#usages_command = "<leader>n"
-let g:jedi#rename_command = "<leader>r"
-let g:jedi#goto_assignments_command = "<leader>g"
-let g:jedi#goto_definitions_command = "<leader>d"
-let g:jedi#use_tabs_not_buffers = 0
+Plugin 'Valloric/YouCompleteMe'
+nnoremap <leader>g :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>d :YcmCompleter GoToDeclaration<CR>
+"Plugin 'davidhalter/jedi-vim'
+"let g:jedi#completions_enabled = 1
+"let g:jedi#show_call_signatures = 0
+"let g:jedi#documentation_command = "K"
+"let g:jedi#usages_command = "<leader>n"
+"let g:jedi#rename_command = "<leader>r"
+"let g:jedi#goto_assignments_command = "<leader>g"
+"let g:jedi#goto_definitions_command = "<leader>d"
+"let g:jedi#use_tabs_not_buffers = 0
 autocmd FileType python setlocal completeopt-=preview
 
 
@@ -155,6 +154,7 @@ vmap <silent> <F3> <ESC>:BuffergatorToggle<CR>
 Plugin 'Lokaltog/vim-easymotion'
 
 Plugin 'wting/rust.vim'
+Plugin 'cespare/vim-toml'
 
 call vundle#end()
 filetype plugin indent on
@@ -182,3 +182,5 @@ nnoremap <Down> :echoe "Use j"<CR>
 
 nnoremap k gk
 nnoremap j gj
+
+set colorcolumn=80
