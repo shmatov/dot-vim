@@ -56,6 +56,12 @@ autocmd Filetype python setlocal tabstop=4 shiftwidth=4
 autocmd Filetype javascript setlocal tabstop=4 shiftwidth=4
 autocmd Filetype html setlocal tabstop=4 shiftwidth=4
 
+function! TrimWhitespace()
+    %s/\s\+$//e
+endfunction
+
+autocmd BufWritePre *.py :call TrimWhitespace()
+
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
@@ -69,7 +75,7 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin()
 
-Plugin 'gmarik/Vundle.vim' 
+Plugin 'gmarik/Vundle.vim'
 "                                                                <Plugins|Ruby/>
 "-------------------------------------------------------------------------------
 Plugin 'vim-ruby/vim-ruby'
@@ -120,6 +126,7 @@ Plugin 'rking/ag.vim'
 Plugin 'Valloric/YouCompleteMe'
 nnoremap <leader>g :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>d :YcmCompleter GoToDeclaration<CR>
+let g:ycm_min_num_identifier_candidate_chars = 100
 "Plugin 'davidhalter/jedi-vim'
 "let g:jedi#completions_enabled = 1
 "let g:jedi#show_call_signatures = 0
