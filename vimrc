@@ -5,6 +5,7 @@ set showcmd
 set nohlsearch
 set incsearch
 set laststatus=2
+set lazyredraw
 
 "set nobackup
 set nowritebackup
@@ -20,7 +21,7 @@ set numberwidth=5
 set cursorline
 set scrolloff=5
 set t_Co=256
-set guifont=Menlo\ for\ Powerline:h15
+set guifont=Consolas:h14
 
 set fileencodings=utf-8,cp1251
 
@@ -117,9 +118,9 @@ Plugin 'Raimondi/delimitMate'
 
 Plugin 'kien/ctrlp.vim'
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  'build\|node_modules\|DS_Store\|git',
-  \ 'file': '\.pyc$'
-  \ }
+      \ 'dir':  'build\|node_modules\|DS_Store\|git',
+      \ 'file': '\.pyc$'
+      \ }
 
 Plugin 'rking/ag.vim'
 
@@ -140,6 +141,9 @@ autocmd FileType python setlocal completeopt-=preview
 
 
 Plugin 'scrooloose/nerdcommenter'
+let g:NERDCustomDelimiters = {
+      \ 'python': { 'left': '# ', 'leftAlt': '', 'rightAlt': '' },
+      \ }
 Plugin 'godlygeek/tabular'
 Plugin 'scrooloose/nerdtree'
 let NERDTreeIgnore = ['\.pyc$']
@@ -150,7 +154,9 @@ vmap <silent> <F2> <ESC>:NERDTreeToggle<CR>
 
 Plugin 'bling/vim-airline'
 let g:airline#extensions#whitespace#enabled = 0
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
+let g:airline_left_sep=''
+let g:airline_right_sep=''
 
 Plugin 'jeetsukumaran/vim-buffergator'
 let g:buffergator_viewport_split_policy='T'
@@ -180,6 +186,8 @@ let mapleader = " "
 nnoremap <leader>ec :edit $HOME/.vim/vimrc<CR>
 " Reload configuration file
 nnoremap <leader>rc :source $HOME/.vim/vimrc<CR>
+
+nnoremap <leader>s :set hls!<CR>
 
 " Get off my lawn
 nnoremap <Left> :echoe "Use h"<CR>
