@@ -69,33 +69,33 @@ if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   syntax on
 endif
 
-"                                                                      <Plugins>
-"===============================================================================
+"                                                                     <Plugins>
+"==============================================================================
 filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
-"                                                                <Plugins|Ruby/>
-"-------------------------------------------------------------------------------
+"                                                               <Plugins|Ruby/>
+"------------------------------------------------------------------------------
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-ragtag'
 Plugin 'tpope/vim-endwise'
 
-"                                                              <Plugins|Python/>
-"-------------------------------------------------------------------------------
+"                                                             <Plugins|Python/>
+"------------------------------------------------------------------------------
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'hynek/vim-python-pep8-indent'
 
-"                                                          <Plugins|JavaScript/>
-"-------------------------------------------------------------------------------
+"                                                         <Plugins|JavaScript/>
+"------------------------------------------------------------------------------
 "Plugin 'mxw/vim-jsx'
 Plugin 'pangloss/vim-javascript'
 Plugin 'jQuery'
 
-"                                                                 <Plugins|Web/>
-"-------------------------------------------------------------------------------
+"                                                                <Plugins|Web/>
+"------------------------------------------------------------------------------
 Plugin 'othree/html5.vim'
 Plugin 'slim-template/vim-slim'
 Plugin 'groenewege/vim-less'
@@ -103,14 +103,14 @@ Plugin 'wavded/vim-stylus'
 Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-haml'
 
-"                                                        <Plugins|Colorschemes/>
-"-------------------------------------------------------------------------------
+"                                                       <Plugins|Colorschemes/>
+"------------------------------------------------------------------------------
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'chriskempson/base16-vim'
 Plugin 'morhetz/gruvbox'
 
-"                                                               <Plugins|Tools/>
-"-------------------------------------------------------------------------------
+"                                                              <Plugins|Tools/>
+"------------------------------------------------------------------------------
 Plugin 'sjl/gundo.vim'
 Plugin 'Raimondi/delimitMate'
 "Plugin 'maxbrunsfeld/vim-yankstack'
@@ -171,8 +171,8 @@ Plugin 'cespare/vim-toml'
 
 call vundle#end()
 filetype plugin indent on
-"                                                                     </Plugins>
-"===============================================================================
+"                                                                    </Plugins>
+"==============================================================================
 
 set noshowmode
 
