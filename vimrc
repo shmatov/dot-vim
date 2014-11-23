@@ -111,6 +111,7 @@ Plugin 'morhetz/gruvbox'
 
 "                                                              <Plugins|Tools/>
 "------------------------------------------------------------------------------
+Plugin 'tpope/vim-fugitive'
 Plugin 'sjl/gundo.vim'
 Plugin 'Raimondi/delimitMate'
 "Plugin 'maxbrunsfeld/vim-yankstack'
