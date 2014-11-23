@@ -176,7 +176,7 @@ filetype plugin indent on
 set noshowmode
 
 set background=light
-colorscheme solarized
+silent! colorscheme solarized
 
 " Leader
 let mapleader = " "
