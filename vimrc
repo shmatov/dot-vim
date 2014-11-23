@@ -73,63 +73,61 @@ endif
 "==============================================================================
 filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#begin()
+call plug#begin('~/.vim/plugins')
 
-Plugin 'gmarik/Vundle.vim'
 "                                                               <Plugins|Ruby/>
 "------------------------------------------------------------------------------
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'tpope/vim-ragtag'
-Plugin 'tpope/vim-endwise'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-ragtag'
+Plug 'tpope/vim-endwise'
 
 "                                                             <Plugins|Python/>
 "------------------------------------------------------------------------------
-Plugin 'jmcantrell/vim-virtualenv'
-Plugin 'hynek/vim-python-pep8-indent'
+Plug 'jmcantrell/vim-virtualenv'
+Plug 'hynek/vim-python-pep8-indent'
 
 "                                                         <Plugins|JavaScript/>
 "------------------------------------------------------------------------------
-"Plugin 'mxw/vim-jsx'
-Plugin 'pangloss/vim-javascript'
-Plugin 'jQuery'
+"Plug 'mxw/vim-jsx'
+Plug 'pangloss/vim-javascript'
+Plug 'jQuery'
 
 "                                                                <Plugins|Web/>
 "------------------------------------------------------------------------------
-Plugin 'othree/html5.vim'
-Plugin 'slim-template/vim-slim'
-Plugin 'groenewege/vim-less'
-Plugin 'wavded/vim-stylus'
-Plugin 'mattn/emmet-vim'
-Plugin 'tpope/vim-haml'
+Plug 'othree/html5.vim'
+Plug 'slim-template/vim-slim'
+Plug 'groenewege/vim-less'
+Plug 'wavded/vim-stylus'
+Plug 'mattn/emmet-vim'
+Plug 'tpope/vim-haml'
 
 "                                                       <Plugins|Colorschemes/>
 "------------------------------------------------------------------------------
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'chriskempson/base16-vim'
-Plugin 'morhetz/gruvbox'
+Plug 'altercation/vim-colors-solarized'
+Plug 'chriskempson/base16-vim'
+Plug 'morhetz/gruvbox'
 
 "                                                              <Plugins|Tools/>
 "------------------------------------------------------------------------------
-Plugin 'tpope/vim-fugitive'
-Plugin 'sjl/gundo.vim'
-Plugin 'Raimondi/delimitMate'
-"Plugin 'maxbrunsfeld/vim-yankstack'
-"Plugin 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
+Plug 'sjl/gundo.vim'
+Plug 'Raimondi/delimitMate'
+"Plug 'maxbrunsfeld/vim-yankstack'
+"Plug 'tpope/vim-surround'
 
-Plugin 'kien/ctrlp.vim'
+Plug 'kien/ctrlp.vim'
 let g:ctrlp_custom_ignore = {
       \ 'dir':  'build\|node_modules\|DS_Store\|git',
       \ 'file': '\.pyc$'
       \ }
 
-Plugin 'rking/ag.vim'
+Plug 'rking/ag.vim'
 
-Plugin 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh'}
 nnoremap <leader>g :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>d :YcmCompleter GoToDeclaration<CR>
 let g:ycm_min_num_identifier_candidate_chars = 100
-"Plugin 'davidhalter/jedi-vim'
+"Plug 'davidhalter/jedi-vim'
 "let g:jedi#completions_enabled = 1
 "let g:jedi#show_call_signatures = 0
 "let g:jedi#documentation_command = "K"
@@ -141,36 +139,36 @@ let g:ycm_min_num_identifier_candidate_chars = 100
 autocmd FileType python setlocal completeopt-=preview
 
 
-Plugin 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdcommenter'
 let g:NERDCustomDelimiters = {
       \ 'python': { 'left': '# ', 'leftAlt': '', 'rightAlt': '' },
       \ }
-Plugin 'godlygeek/tabular'
-Plugin 'scrooloose/nerdtree'
+Plug 'godlygeek/tabular'
+Plug 'scrooloose/nerdtree'
 let NERDTreeIgnore = ['\.pyc$']
 let NERDTreeWinSize = 25
 nmap <silent> <F2> :NERDTreeToggle<CR>
 imap <silent> <F2> <ESC>:NERDTreeToggle<CR>
 vmap <silent> <F2> <ESC>:NERDTreeToggle<CR>
 
-Plugin 'bling/vim-airline'
+Plug 'bling/vim-airline'
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline_powerline_fonts = 0
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 
-Plugin 'jeetsukumaran/vim-buffergator'
+Plug 'jeetsukumaran/vim-buffergator'
 let g:buffergator_viewport_split_policy='T'
 let g:buffergator_autoexpand_on_split=0
 nmap <silent> <F3> :BuffergatorToggle<CR>
 imap <silent> <F3> <ESC>:BuffergatorToggle<CR>
 vmap <silent> <F3> <ESC>:BuffergatorToggle<CR>
-Plugin 'Lokaltog/vim-easymotion'
+Plug 'Lokaltog/vim-easymotion'
 
-Plugin 'wting/rust.vim'
-Plugin 'cespare/vim-toml'
+Plug 'wting/rust.vim'
+Plug 'cespare/vim-toml'
 
-call vundle#end()
+call plug#end()
 filetype plugin indent on
 "                                                                    </Plugins>
 "==============================================================================

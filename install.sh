@@ -1,9 +1,10 @@
 #!/bin/bash
 
-mkdir ~/.vim/undodir
-git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-echo "source ~/.vim/vimrc" >> ~/.vimrc
-vim +PluginInstall +qall
+mkdir -p ~/.vim/undodir
+mkdir -p ~/.vim/autoload
 
-cd ~/.vim/bundle/YouCompleteMe
-./install.sh
+curl -fLo ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+echo "source ~/.vim/vimrc" >> ~/.vimrc
+
+vim +PlugInstall +qall
