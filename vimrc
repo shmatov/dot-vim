@@ -5,7 +5,7 @@ set showcmd
 set nohlsearch
 set incsearch
 set laststatus=2
-set lazyredraw
+"set lazyredraw
 
 "set nobackup
 set nowritebackup
@@ -15,8 +15,8 @@ set undolevels=1000
 set undoreload=10000
 set noswapfile
 
-set number
-set numberwidth=5
+"set number
+"set numberwidth=5
 
 set cursorline
 set scrolloff=5
@@ -110,8 +110,8 @@ Plug 'morhetz/gruvbox'
 "                                                              <Plugins|Tools/>
 "------------------------------------------------------------------------------
 Plug 'tpope/vim-fugitive'
-Plug 'sjl/gundo.vim'
 Plug 'Raimondi/delimitMate'
+autocmd FileType rust let b:delimitMate_quotes = "\""
 "Plug 'maxbrunsfeld/vim-yankstack'
 "Plug 'tpope/vim-surround'
 
@@ -143,7 +143,9 @@ Plug 'scrooloose/nerdcommenter'
 let g:NERDCustomDelimiters = {
       \ 'python': { 'left': '# ', 'leftAlt': '', 'rightAlt': '' },
       \ }
+
 Plug 'godlygeek/tabular'
+
 Plug 'scrooloose/nerdtree'
 let NERDTreeIgnore = ['\.pyc$']
 let NERDTreeWinSize = 25
