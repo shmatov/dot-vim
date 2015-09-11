@@ -53,15 +53,24 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
+set wildmenu
+
 autocmd Filetype python setlocal tabstop=4 shiftwidth=4
+autocmd Filetype rust setlocal tabstop=4 shiftwidth=4
 autocmd Filetype javascript setlocal tabstop=4 shiftwidth=4
 autocmd Filetype html setlocal tabstop=4 shiftwidth=4
+autocmd Filetype go setlocal tabstop=4 shiftwidth=4 noexpandtab
 
 function! TrimWhitespace()
     %s/\s\+$//e
 endfunction
 
 autocmd BufWritePre *.py :call TrimWhitespace()
+autocmd BufWritePre *.rs :call TrimWhitespace()
+autocmd BufWritePre *.js :call TrimWhitespace()
+
+au BufNewFile,BufRead *.md set filetype=markdown
+au BufNewFile,BufRead *.rpy set filetype=python
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -85,6 +94,7 @@ Plug 'tpope/vim-endwise'
 "------------------------------------------------------------------------------
 Plug 'jmcantrell/vim-virtualenv'
 Plug 'hynek/vim-python-pep8-indent'
+Plug 'python_match.vim'
 
 "                                                         <Plugins|JavaScript/>
 "------------------------------------------------------------------------------
@@ -117,16 +127,34 @@ autocmd FileType rust let b:delimitMate_quotes = "\""
 
 Plug 'kien/ctrlp.vim'
 let g:ctrlp_custom_ignore = {
-      \ 'dir':  'build\|node_modules\|DS_Store\|git',
+      \ 'dir':  'build\|node_modules\|DS_Store\|git\|target',
       \ 'file': '\.pyc$'
       \ }
 
 Plug 'rking/ag.vim'
 
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh'}
-nnoremap <leader>g :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>d :YcmCompleter GoToDeclaration<CR>
 let g:ycm_min_num_identifier_candidate_chars = 100
+
+let $GOPATH='/Users/shmatov/Code/go'
+let g:go_bin_path = expand("~/.gotools")
+"let g:go_highlight_functions = 1
+"let g:go_highlight_methods = 1
+"let g:go_highlight_structs = 1
+"let g:go_highlight_operators = 1
+"let g:go_highlight_build_constraints = 1
+let g:go_fmt_autosave = 0
+Plug 'fatih/vim-go'
+
+function! GoToDecl()
+    if &ft == 'go'
+        call go#def#Jump()
+    else
+        execute 'YcmCompleter GoToDeclaration'
+    endif
+endfunction
+nnoremap <leader>d :call GoToDecl()<CR>
+
 "Plug 'davidhalter/jedi-vim'
 "let g:jedi#completions_enabled = 1
 "let g:jedi#show_call_signatures = 0
@@ -137,7 +165,21 @@ let g:ycm_min_num_identifier_candidate_chars = 100
 "let g:jedi#goto_definitions_command = "<leader>d"
 "let g:jedi#use_tabs_not_buffers = 0
 autocmd FileType python setlocal completeopt-=preview
+autocmd FileType go setlocal completeopt-=preview
 
+Plug 'scrooloose/syntastic'
+"let g:syntastic_error_symbol = "•""
+"let g:syntastic_warning_symbol = "•""
+"let g:syntastic_style_error_symbol = "•"
+"let g:syntastic_style_warning_symbol = "•""
+"highlight SyntasticStyleErrorSign guifg=white guibg=red
+"highlight SyntasticStyleWarningSign guifg=white guibg=red
+let g:syntastic_mode_map = {
+      \ "mode": "passive",
+      \ "active_filetypes": [],
+      \ "passive_filetypes": [] }
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_python_flake8_args = "--ignore=E501"
 
 Plug 'scrooloose/nerdcommenter'
 let g:NERDCustomDelimiters = {
@@ -148,7 +190,7 @@ Plug 'godlygeek/tabular'
 
 Plug 'scrooloose/nerdtree'
 let NERDTreeIgnore = ['\.pyc$']
-let NERDTreeWinSize = 25
+let NERDTreeWinSize = 35
 nmap <silent> <F2> :NERDTreeToggle<CR>
 imap <silent> <F2> <ESC>:NERDTreeToggle<CR>
 vmap <silent> <F2> <ESC>:NERDTreeToggle<CR>
@@ -162,6 +204,7 @@ let g:airline_right_sep=''
 Plug 'jeetsukumaran/vim-buffergator'
 let g:buffergator_viewport_split_policy='T'
 let g:buffergator_autoexpand_on_split=0
+let g:buffergator_sort_regime="mru"
 nmap <silent> <F3> :BuffergatorToggle<CR>
 imap <silent> <F3> <ESC>:BuffergatorToggle<CR>
 vmap <silent> <F3> <ESC>:BuffergatorToggle<CR>
@@ -188,7 +231,11 @@ nnoremap <leader>ec :edit $HOME/.vim/vimrc<CR>
 " Reload configuration file
 nnoremap <leader>rc :source $HOME/.vim/vimrc<CR>
 
-nnoremap <leader>s :set hls!<CR>
+nnoremap <leader>sc :SyntasticCheck<CR>
+nnoremap <leader>sr :SyntasticReset<CR>
+
+nnoremap <leader>h :set hls!<CR>
+nnoremap <leader>f :let @+ = expand("%@")<CR>
 
 " Get off my lawn
 nnoremap <Left> :echoe "Use h"<CR>
