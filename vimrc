@@ -135,25 +135,27 @@ Plug 'rking/ag.vim'
 
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh'}
 let g:ycm_min_num_identifier_candidate_chars = 100
+nnoremap <leader>g :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>d :YcmCompleter GoToDeclaration<CR>
 
-let $GOPATH='/Users/shmatov/Code/go'
-let g:go_bin_path = expand("~/.gotools")
+"let $GOPATH='/Users/shmatov/Code/go'
+"let g:go_bin_path = expand("~/.gotools")
 "let g:go_highlight_functions = 1
 "let g:go_highlight_methods = 1
 "let g:go_highlight_structs = 1
 "let g:go_highlight_operators = 1
 "let g:go_highlight_build_constraints = 1
-let g:go_fmt_autosave = 0
-Plug 'fatih/vim-go'
+"let g:go_fmt_autosave = 0
+"Plug 'fatih/vim-go'
 
-function! GoToDecl()
-    if &ft == 'go'
-        call go#def#Jump()
-    else
-        execute 'YcmCompleter GoToDeclaration'
-    endif
-endfunction
-nnoremap <leader>d :call GoToDecl()<CR>
+"function! GoToDecl()
+"    if &ft == 'go'
+"        call go#def#Jump()
+"    else
+"        execute 'YcmCompleter GoToDeclaration'
+"    endif
+"endfunction
+"nnoremap <leader>d :call GoToDecl()<CR>
 
 "Plug 'davidhalter/jedi-vim'
 "let g:jedi#completions_enabled = 1
