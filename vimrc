@@ -133,7 +133,7 @@ let g:ctrlp_custom_ignore = {
 
 Plug 'rking/ag.vim'
 
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh'}
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py'}
 let g:ycm_min_num_identifier_candidate_chars = 100
 nnoremap <leader>g :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>d :YcmCompleter GoToDeclaration<CR>
