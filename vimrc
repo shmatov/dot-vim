@@ -55,6 +55,7 @@ set expandtab
 
 set wildmenu
 
+autocmd Filetype cpp setlocal tabstop=4 shiftwidth=4 expandtab
 autocmd Filetype python setlocal tabstop=4 shiftwidth=4
 autocmd Filetype rust setlocal tabstop=4 shiftwidth=4
 autocmd Filetype javascript setlocal tabstop=4 shiftwidth=4
@@ -68,6 +69,7 @@ endfunction
 autocmd BufWritePre *.py :call TrimWhitespace()
 autocmd BufWritePre *.rs :call TrimWhitespace()
 autocmd BufWritePre *.js :call TrimWhitespace()
+autocmd BufWritePre *.cpp :call TrimWhitespace()
 
 au BufNewFile,BufRead *.md set filetype=markdown
 au BufNewFile,BufRead *.rpy set filetype=python
@@ -82,58 +84,62 @@ endif
 "==============================================================================
 filetype off
 
-call plug#begin('~/.vim/plugins')
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
 
 "                                                               <Plugins|Ruby/>
 "------------------------------------------------------------------------------
-Plug 'vim-ruby/vim-ruby'
-Plug 'tpope/vim-ragtag'
-Plug 'tpope/vim-endwise'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-ragtag'
+Plugin 'tpope/vim-endwise'
 
 "                                                             <Plugins|Python/>
 "------------------------------------------------------------------------------
-Plug 'jmcantrell/vim-virtualenv'
-Plug 'hynek/vim-python-pep8-indent'
-Plug 'python_match.vim'
+" Plugin 'jmcantrell/vim-virtualenv'
+Plugin 'hynek/vim-python-pep8-indent'
+Plugin 'python_match.vim'
 
 "                                                         <Plugins|JavaScript/>
 "------------------------------------------------------------------------------
-"Plug 'mxw/vim-jsx'
-Plug 'pangloss/vim-javascript'
-Plug 'jQuery'
+"Plugin 'mxw/vim-jsx'
+Plugin 'pangloss/vim-javascript'
+Plugin 'jQuery'
 
 "                                                                <Plugins|Web/>
 "------------------------------------------------------------------------------
-Plug 'othree/html5.vim'
-Plug 'slim-template/vim-slim'
-Plug 'groenewege/vim-less'
-Plug 'wavded/vim-stylus'
-Plug 'mattn/emmet-vim'
-Plug 'tpope/vim-haml'
+Plugin 'othree/html5.vim'
+Plugin 'slim-template/vim-slim'
+Plugin 'groenewege/vim-less'
+Plugin 'wavded/vim-stylus'
+Plugin 'mattn/emmet-vim'
+Plugin 'tpope/vim-haml'
 
 "                                                       <Plugins|Colorschemes/>
 "------------------------------------------------------------------------------
-Plug 'altercation/vim-colors-solarized'
-Plug 'chriskempson/base16-vim'
-Plug 'morhetz/gruvbox'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'chriskempson/base16-vim'
+Plugin 'morhetz/gruvbox'
 
 "                                                              <Plugins|Tools/>
 "------------------------------------------------------------------------------
-Plug 'tpope/vim-fugitive'
-Plug 'Raimondi/delimitMate'
+Plugin 'tpope/vim-fugitive'
+Plugin 'Raimondi/delimitMate'
 autocmd FileType rust let b:delimitMate_quotes = "\""
-"Plug 'maxbrunsfeld/vim-yankstack'
-"Plug 'tpope/vim-surround'
+"Plugin 'maxbrunsfeld/vim-yankstack'
+"Plugin 'tpope/vim-surround'
 
-Plug 'kien/ctrlp.vim'
+Plugin 'kien/ctrlp.vim'
 let g:ctrlp_custom_ignore = {
       \ 'dir':  'build\|node_modules\|DS_Store\|git\|target',
       \ 'file': '\.pyc$'
       \ }
 
-Plug 'rking/ag.vim'
+Plugin 'rking/ag.vim'
 
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py'}
+Plugin 'Valloric/YouCompleteMe' 
+" , { 'do': './install.py'}
 let g:ycm_min_num_identifier_candidate_chars = 100
 nnoremap <leader>g :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>d :YcmCompleter GoToDeclaration<CR>
@@ -146,18 +152,18 @@ nnoremap <leader>d :YcmCompleter GoToDeclaration<CR>
 "let g:go_highlight_operators = 1
 "let g:go_highlight_build_constraints = 1
 "let g:go_fmt_autosave = 0
-"Plug 'fatih/vim-go'
+"Plugin 'fatih/vim-go'
 
-"function! GoToDecl()
+" function! GoToDecl()
 "    if &ft == 'go'
 "        call go#def#Jump()
 "    else
 "        execute 'YcmCompleter GoToDeclaration'
 "    endif
-"endfunction
-"nnoremap <leader>d :call GoToDecl()<CR>
+" endfunction
+" nnoremap <leader>d :call GoToDecl()<CR>
 
-"Plug 'davidhalter/jedi-vim'
+"Plugin 'davidhalter/jedi-vim'
 "let g:jedi#completions_enabled = 1
 "let g:jedi#show_call_signatures = 0
 "let g:jedi#documentation_command = "K"
@@ -169,7 +175,7 @@ nnoremap <leader>d :YcmCompleter GoToDeclaration<CR>
 autocmd FileType python setlocal completeopt-=preview
 autocmd FileType go setlocal completeopt-=preview
 
-Plug 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 "let g:syntastic_error_symbol = "•""
 "let g:syntastic_warning_symbol = "•""
 "let g:syntastic_style_error_symbol = "•"
@@ -183,39 +189,43 @@ let g:syntastic_mode_map = {
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_flake8_args = "--ignore=E501"
 
-Plug 'scrooloose/nerdcommenter'
-let g:NERDCustomDelimiters = {
-      \ 'python': { 'left': '# ', 'leftAlt': '', 'rightAlt': '' },
-      \ }
+Plugin 'scrooloose/nerdcommenter'
+let g:NERDSpaceDelims=1
+"let g:NERDCustomDelimiters = {
+"      \ 'python': { 'left': '# ', 'leftAlt': '', 'rightAlt': '' },
+"      \ 'cpp': { 'left': '// ', 'leftAlt': '', 'rightAlt': '' },
+"      \ }
 
-Plug 'godlygeek/tabular'
+Plugin 'godlygeek/tabular'
 
-Plug 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree'
 let NERDTreeIgnore = ['\.pyc$']
 let NERDTreeWinSize = 35
 nmap <silent> <F2> :NERDTreeToggle<CR>
 imap <silent> <F2> <ESC>:NERDTreeToggle<CR>
 vmap <silent> <F2> <ESC>:NERDTreeToggle<CR>
 
-Plug 'bling/vim-airline'
+Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline_powerline_fonts = 0
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 
-Plug 'jeetsukumaran/vim-buffergator'
+Plugin 'jeetsukumaran/vim-buffergator'
 let g:buffergator_viewport_split_policy='T'
 let g:buffergator_autoexpand_on_split=0
 let g:buffergator_sort_regime="mru"
 nmap <silent> <F3> :BuffergatorToggle<CR>
 imap <silent> <F3> <ESC>:BuffergatorToggle<CR>
 vmap <silent> <F3> <ESC>:BuffergatorToggle<CR>
-Plug 'Lokaltog/vim-easymotion'
+Plugin 'Lokaltog/vim-easymotion'
 
-Plug 'wting/rust.vim'
-Plug 'cespare/vim-toml'
+Plugin 'wting/rust.vim'
+Plugin 'cespare/vim-toml'
 
-call plug#end()
+
+call vundle#end()  
 filetype plugin indent on
 "                                                                    </Plugins>
 "==============================================================================
