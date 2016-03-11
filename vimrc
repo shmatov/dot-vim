@@ -139,8 +139,9 @@ let g:ctrlp_custom_ignore = {
 Plugin 'rking/ag.vim'
 
 Plugin 'Valloric/YouCompleteMe' 
-" , { 'do': './install.py'}
-let g:ycm_min_num_identifier_candidate_chars = 100
+"let g:ycm_min_num_identifier_candidate_chars = 100
+let g:ycm_min_num_of_chars_for_completion = 100
+let g:ycm_auto_trigger = 0
 nnoremap <leader>g :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>d :YcmCompleter GoToDeclaration<CR>
 
@@ -190,7 +191,7 @@ let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_flake8_args = "--ignore=E501"
 
 Plugin 'scrooloose/nerdcommenter'
-let g:NERDSpaceDelims=1
+" let g:NERDSpaceDelims=1
 "let g:NERDCustomDelimiters = {
 "      \ 'python': { 'left': '# ', 'leftAlt': '', 'rightAlt': '' },
 "      \ 'cpp': { 'left': '// ', 'leftAlt': '', 'rightAlt': '' },
