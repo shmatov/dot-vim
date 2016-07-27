@@ -22,6 +22,8 @@ set cursorline
 set scrolloff=5
 set t_Co=256
 set guifont=Consolas:h14
+"set guifont=Menlo:h14
+"set guifont=mononoki:h14
 
 set fileencodings=utf-8,cp1251
 
@@ -56,6 +58,7 @@ set expandtab
 set wildmenu
 
 autocmd Filetype cpp setlocal tabstop=4 shiftwidth=4 expandtab
+autocmd Filetype c setlocal tabstop=4 shiftwidth=4 expandtab
 autocmd Filetype python setlocal tabstop=4 shiftwidth=4
 autocmd Filetype rust setlocal tabstop=4 shiftwidth=4
 autocmd Filetype javascript setlocal tabstop=4 shiftwidth=4
@@ -64,6 +67,12 @@ autocmd Filetype go setlocal tabstop=4 shiftwidth=4 noexpandtab
 
 function! TrimWhitespace()
     %s/\s\+$//e
+endfunction
+
+function! GoImports()
+  let l:winview = winsaveview()
+  %!goimports
+  call winrestview(l:winview)
 endfunction
 
 autocmd BufWritePre *.py :call TrimWhitespace()
@@ -130,11 +139,16 @@ autocmd FileType rust let b:delimitMate_quotes = "\""
 "Plugin 'maxbrunsfeld/vim-yankstack'
 "Plugin 'tpope/vim-surround'
 
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_custom_ignore = {
       \ 'dir':  'build\|node_modules\|DS_Store\|git\|target',
       \ 'file': '\.pyc$'
       \ }
+let g:ctrlp_buftag_types = {'go' : '--language-force=go'}
+let g:ctrlp_match_window = 'max:15'
+
+"nnoremap <C-j> :CtrlPBufTagAll<cr>
+nnoremap <C-j> :CtrlPBufTag<cr>
 
 Plugin 'rking/ag.vim'
 
@@ -144,6 +158,7 @@ let g:ycm_min_num_of_chars_for_completion = 100
 let g:ycm_auto_trigger = 0
 nnoremap <leader>g :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>d :YcmCompleter GoToDeclaration<CR>
+"let g:ycm_python_binary_path = '/usr/local/bin/python2'
 
 "let $GOPATH='/Users/shmatov/Code/go'
 "let g:go_bin_path = expand("~/.gotools")
@@ -200,7 +215,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'godlygeek/tabular'
 
 Plugin 'scrooloose/nerdtree'
-let NERDTreeIgnore = ['\.pyc$']
+let NERDTreeIgnore = ['\.pyc$', '__pycache__']
 let NERDTreeWinSize = 35
 nmap <silent> <F2> :NERDTreeToggle<CR>
 imap <silent> <F2> <ESC>:NERDTreeToggle<CR>
@@ -246,6 +261,7 @@ nnoremap <leader>rc :source $HOME/.vim/vimrc<CR>
 
 nnoremap <leader>sc :SyntasticCheck<CR>
 nnoremap <leader>sr :SyntasticReset<CR>
+nnoremap <leader>gi  :call GoImports()<CR>
 
 nnoremap <leader>h :set hls!<CR>
 nnoremap <leader>f :let @+ = expand("%@")<CR>
