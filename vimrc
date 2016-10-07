@@ -14,6 +14,7 @@ set undodir=~/.vim/undodir
 set undolevels=1000
 set undoreload=10000
 set noswapfile
+set nowrap
 
 "set number
 "set numberwidth=5
@@ -57,8 +58,8 @@ set expandtab
 
 set wildmenu
 
-autocmd Filetype cpp setlocal tabstop=4 shiftwidth=4 expandtab
-autocmd Filetype c setlocal tabstop=4 shiftwidth=4 expandtab
+autocmd Filetype cpp setlocal tabstop=2 shiftwidth=2 expandtab
+autocmd Filetype c setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd Filetype python setlocal tabstop=4 shiftwidth=4
 autocmd Filetype rust setlocal tabstop=4 shiftwidth=4
 autocmd Filetype javascript setlocal tabstop=4 shiftwidth=4
@@ -112,23 +113,11 @@ Plugin 'python_match.vim'
 
 "                                                         <Plugins|JavaScript/>
 "------------------------------------------------------------------------------
-"Plugin 'mxw/vim-jsx'
 Plugin 'pangloss/vim-javascript'
-Plugin 'jQuery'
-
-"                                                                <Plugins|Web/>
-"------------------------------------------------------------------------------
-Plugin 'othree/html5.vim'
-Plugin 'slim-template/vim-slim'
-Plugin 'groenewege/vim-less'
-Plugin 'wavded/vim-stylus'
-Plugin 'mattn/emmet-vim'
-Plugin 'tpope/vim-haml'
 
 "                                                       <Plugins|Colorschemes/>
 "------------------------------------------------------------------------------
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'chriskempson/base16-vim'
 Plugin 'morhetz/gruvbox'
 
 "                                                              <Plugins|Tools/>
@@ -136,8 +125,6 @@ Plugin 'morhetz/gruvbox'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Raimondi/delimitMate'
 autocmd FileType rust let b:delimitMate_quotes = "\""
-"Plugin 'maxbrunsfeld/vim-yankstack'
-"Plugin 'tpope/vim-surround'
 
 Plugin 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_custom_ignore = {
@@ -156,9 +143,7 @@ Plugin 'Valloric/YouCompleteMe'
 "let g:ycm_min_num_identifier_candidate_chars = 100
 let g:ycm_min_num_of_chars_for_completion = 100
 let g:ycm_auto_trigger = 0
-nnoremap <leader>g :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>d :YcmCompleter GoToDeclaration<CR>
-"let g:ycm_python_binary_path = '/usr/local/bin/python2'
+let g:ycm_python_binary_path = '/usr/local/bin/python2'
 
 "let $GOPATH='/Users/shmatov/Code/go'
 "let g:go_bin_path = expand("~/.gotools")
@@ -204,6 +189,8 @@ let g:syntastic_mode_map = {
       \ "passive_filetypes": [] }
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_flake8_args = "--ignore=E501"
+let g:syntastic_go_checkers = ['go']
+let g:syntastic_javascript_checkers = ['eslint']
 
 Plugin 'scrooloose/nerdcommenter'
 " let g:NERDSpaceDelims=1
@@ -251,6 +238,9 @@ set noshowmode
 set background=light
 silent! colorscheme solarized
 
+"set background=dark
+"silent! colorscheme gruvbox
+
 " Leader
 let mapleader = " "
 
@@ -261,7 +251,10 @@ nnoremap <leader>rc :source $HOME/.vim/vimrc<CR>
 
 nnoremap <leader>sc :SyntasticCheck<CR>
 nnoremap <leader>sr :SyntasticReset<CR>
-nnoremap <leader>gi  :call GoImports()<CR>
+nnoremap <leader>gi :call GoImports()<CR>
+
+nnoremap <leader>g :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>d :YcmCompleter GoToDeclaration<CR>
 
 nnoremap <leader>h :set hls!<CR>
 nnoremap <leader>f :let @+ = expand("%@")<CR>
