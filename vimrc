@@ -22,6 +22,7 @@ set nowrap
 set cursorline
 set scrolloff=5
 set t_Co=256
+"set guifont=Hack:h14
 set guifont=Consolas:h14
 "set guifont=Menlo:h14
 "set guifont=mononoki:h14
@@ -62,7 +63,7 @@ autocmd Filetype cpp setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd Filetype c setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd Filetype python setlocal tabstop=4 shiftwidth=4
 autocmd Filetype rust setlocal tabstop=4 shiftwidth=4
-autocmd Filetype javascript setlocal tabstop=4 shiftwidth=4
+autocmd Filetype javascript setlocal tabstop=2 shiftwidth=2
 autocmd Filetype html setlocal tabstop=4 shiftwidth=4
 autocmd Filetype go setlocal tabstop=4 shiftwidth=4 noexpandtab
 
@@ -102,13 +103,13 @@ Plugin 'VundleVim/Vundle.vim'
 "                                                               <Plugins|Ruby/>
 "------------------------------------------------------------------------------
 Plugin 'vim-ruby/vim-ruby'
-Plugin 'tpope/vim-ragtag'
-Plugin 'tpope/vim-endwise'
+"Plugin 'tpope/vim-ragtag'
+"Plugin 'tpope/vim-endwise'
 
 "                                                             <Plugins|Python/>
 "------------------------------------------------------------------------------
 " Plugin 'jmcantrell/vim-virtualenv'
-Plugin 'hynek/vim-python-pep8-indent'
+Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'python_match.vim'
 
 "                                                         <Plugins|JavaScript/>
@@ -118,6 +119,7 @@ Plugin 'pangloss/vim-javascript'
 "                                                       <Plugins|Colorschemes/>
 "------------------------------------------------------------------------------
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'dracula/vim'
 Plugin 'morhetz/gruvbox'
 
 "                                                              <Plugins|Tools/>
@@ -138,9 +140,11 @@ let g:ctrlp_match_window = 'max:15'
 nnoremap <C-j> :CtrlPBufTag<cr>
 
 Plugin 'rking/ag.vim'
+Plugin 'mhinz/vim-grepper'
 
 Plugin 'Valloric/YouCompleteMe' 
 "let g:ycm_min_num_identifier_candidate_chars = 100
+"
 let g:ycm_min_num_of_chars_for_completion = 100
 let g:ycm_auto_trigger = 0
 let g:ycm_python_binary_path = '/usr/local/bin/python2'
@@ -176,13 +180,16 @@ let g:ycm_python_binary_path = '/usr/local/bin/python2'
 autocmd FileType python setlocal completeopt-=preview
 autocmd FileType go setlocal completeopt-=preview
 
+"Plugin 'w0rp/ale'
+"let g:ale_linters = { 'python': ['flake8'] }
+"let g:ale_python_flake8_executable = 'python'   " or 'python' for Python 2
+"let g:ale_python_flake8_args = '-m flake8'
+"let g:ale_lint_on_save = 1
+"let g:ale_open_list = 1
+
+Plugin 'neomake/neomake'
+
 Plugin 'scrooloose/syntastic'
-"let g:syntastic_error_symbol = "•""
-"let g:syntastic_warning_symbol = "•""
-"let g:syntastic_style_error_symbol = "•"
-"let g:syntastic_style_warning_symbol = "•""
-"highlight SyntasticStyleErrorSign guifg=white guibg=red
-"highlight SyntasticStyleWarningSign guifg=white guibg=red
 let g:syntastic_mode_map = {
       \ "mode": "passive",
       \ "active_filetypes": [],
@@ -193,12 +200,6 @@ let g:syntastic_go_checkers = ['go']
 let g:syntastic_javascript_checkers = ['eslint']
 
 Plugin 'scrooloose/nerdcommenter'
-" let g:NERDSpaceDelims=1
-"let g:NERDCustomDelimiters = {
-"      \ 'python': { 'left': '# ', 'leftAlt': '', 'rightAlt': '' },
-"      \ 'cpp': { 'left': '// ', 'leftAlt': '', 'rightAlt': '' },
-"      \ }
-
 Plugin 'godlygeek/tabular'
 
 Plugin 'scrooloose/nerdtree'
@@ -235,7 +236,7 @@ filetype plugin indent on
 
 set noshowmode
 
-set background=light
+set background=dark
 silent! colorscheme solarized
 
 "set background=dark
