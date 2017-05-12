@@ -143,11 +143,10 @@ Plugin 'rking/ag.vim'
 Plugin 'mhinz/vim-grepper'
 
 Plugin 'Valloric/YouCompleteMe' 
-"let g:ycm_min_num_identifier_candidate_chars = 100
-"
-let g:ycm_min_num_of_chars_for_completion = 100
 let g:ycm_auto_trigger = 0
-let g:ycm_python_binary_path = '/usr/local/bin/python2'
+"let g:ycm_python_binary_path = '/usr/local/bin/python2'
+let g:ycm_python_binary_path = 'python'
+let g:ycm_show_diagnostics_ui = 0
 
 "let $GOPATH='/Users/shmatov/Code/go'
 "let g:go_bin_path = expand("~/.gotools")
@@ -188,6 +187,26 @@ autocmd FileType go setlocal completeopt-=preview
 "let g:ale_open_list = 1
 
 Plugin 'neomake/neomake'
+let g:neomake_python_enabled_makers = ['flake8']
+
+"let g:neomake_error_sign = {'text': 'E', 'texthl': 'NeomakeErrorSign'}
+"let g:neomake_warning_sign = {'text': 'W', 'texthl': 'NeomakeWarningSign'}
+"let g:neomake_message_sign = {'text': 'M', 'texthl': 'NeomakeMessageSign'}
+"let g:neomake_info_sign = {'text': 'I', 'texthl': 'NeomakeInfoSign'}
+let g:neomake_place_signs = 0
+let g:neomake_remove_invalid_entries = 1
+
+let g:neomake_remote_maker = {
+    \ 'exe': './make_remote',
+    \ 'args': [],
+    \ 'append_file': 0,
+    \ 'errorformat': 
+      \ '%E%f:%l:%c: error: %m,' .
+      \ '%W%f:%l:%c: warning: %m,' .
+      \ '%f:%l:%c: note: %m,' .
+      \ '%f:%l:%c: %m',
+    \ }
+
 
 Plugin 'scrooloose/syntastic'
 let g:syntastic_mode_map = {
@@ -198,6 +217,7 @@ let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_flake8_args = "--ignore=E501"
 let g:syntastic_go_checkers = ['go']
 let g:syntastic_javascript_checkers = ['eslint']
+
 
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'godlygeek/tabular'
@@ -236,7 +256,7 @@ filetype plugin indent on
 
 set noshowmode
 
-set background=dark
+set background=light
 silent! colorscheme solarized
 
 "set background=dark
@@ -250,8 +270,9 @@ nnoremap <leader>ec :edit $HOME/.vim/vimrc<CR>
 " Reload configuration file
 nnoremap <leader>rc :source $HOME/.vim/vimrc<CR>
 
-nnoremap <leader>sc :SyntasticCheck<CR>
-nnoremap <leader>sr :SyntasticReset<CR>
+"nnoremap <leader>sc :SyntasticCheck<CR>
+"nnoremap <leader>sr :SyntasticReset<CR>
+nnoremap <leader>c :Neomake<CR>
 nnoremap <leader>gi :call GoImports()<CR>
 
 nnoremap <leader>g :YcmCompleter GoToDefinition<CR>

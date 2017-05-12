@@ -9,4 +9,4 @@ echo "source ~/.vim/vimrc" >> ~/.vimrc
 
 vim +PluginInstall +qall
 
-python ~/.vim/bundle/YouCompleteMe/install.py --gocode-completer
+python ~/.vim/bundle/YouCompleteMe/install.py --gocode-completer --clang-completer
