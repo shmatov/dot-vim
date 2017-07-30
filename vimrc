@@ -208,15 +208,15 @@ let g:neomake_remote_maker = {
     \ }
 
 
-Plugin 'scrooloose/syntastic'
-let g:syntastic_mode_map = {
-      \ "mode": "passive",
-      \ "active_filetypes": [],
-      \ "passive_filetypes": [] }
-let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_python_flake8_args = "--ignore=E501"
-let g:syntastic_go_checkers = ['go']
-let g:syntastic_javascript_checkers = ['eslint']
+"Plugin 'scrooloose/syntastic'
+"let g:syntastic_mode_map = {
+"      \ "mode": "passive",
+"      \ "active_filetypes": [],
+"      \ "passive_filetypes": [] }
+"let g:syntastic_python_checkers = ['flake8']
+"let g:syntastic_python_flake8_args = "--ignore=E501"
+"let g:syntastic_go_checkers = ['go']
+"let g:syntastic_javascript_checkers = ['eslint']
 
 
 Plugin 'scrooloose/nerdcommenter'
@@ -229,7 +229,7 @@ nmap <silent> <F2> :NERDTreeToggle<CR>
 imap <silent> <F2> <ESC>:NERDTreeToggle<CR>
 vmap <silent> <F2> <ESC>:NERDTreeToggle<CR>
 
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline_powerline_fonts = 0
@@ -275,8 +275,8 @@ nnoremap <leader>rc :source $HOME/.vim/vimrc<CR>
 nnoremap <leader>c :Neomake<CR>
 nnoremap <leader>gi :call GoImports()<CR>
 
-nnoremap <leader>g :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>d :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>s :YcmCompleter GoTo<CR>
 
 nnoremap <leader>h :set hls!<CR>
 nnoremap <leader>f :let @+ = expand("%@")<CR>
