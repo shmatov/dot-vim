@@ -63,7 +63,7 @@ autocmd Filetype cpp setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd Filetype c setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd Filetype python setlocal tabstop=4 shiftwidth=4
 autocmd Filetype rust setlocal tabstop=4 shiftwidth=4
-autocmd Filetype javascript setlocal tabstop=2 shiftwidth=2
+autocmd Filetype javascript setlocal tabstop=4 shiftwidth=4
 autocmd Filetype html setlocal tabstop=4 shiftwidth=4
 autocmd Filetype go setlocal tabstop=4 shiftwidth=4 noexpandtab
 
@@ -114,7 +114,8 @@ Plugin 'python_match.vim'
 
 "                                                         <Plugins|JavaScript/>
 "------------------------------------------------------------------------------
-Plugin 'pangloss/vim-javascript'
+"Plugin 'pangloss/vim-javascript'
+Plugin 'othree/yajs.vim'
 
 "                                                       <Plugins|Colorschemes/>
 "------------------------------------------------------------------------------
@@ -147,6 +148,7 @@ let g:ycm_auto_trigger = 0
 "let g:ycm_python_binary_path = '/usr/local/bin/python2'
 let g:ycm_python_binary_path = 'python'
 let g:ycm_show_diagnostics_ui = 0
+"let g:ycm_log_level = 'debug'
 
 "let $GOPATH='/Users/shmatov/Code/go'
 "let g:go_bin_path = expand("~/.gotools")
@@ -156,7 +158,9 @@ let g:ycm_show_diagnostics_ui = 0
 "let g:go_highlight_operators = 1
 "let g:go_highlight_build_constraints = 1
 "let g:go_fmt_autosave = 0
-"Plugin 'fatih/vim-go'
+"
+let g:go_fmt_command = "goimports"
+Plugin 'fatih/vim-go'
 
 " function! GoToDecl()
 "    if &ft == 'go'
@@ -258,9 +262,6 @@ set noshowmode
 
 set background=light
 silent! colorscheme solarized
-
-"set background=dark
-"silent! colorscheme gruvbox
 
 " Leader
 let mapleader = " "
