@@ -1,12 +1,10 @@
 #!/bin/bash
 
 mkdir -p ~/.vim/undodir
-mkdir -p ~/.vim/bundle
 
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 echo "source ~/.vim/vimrc" >> ~/.vimrc
 
-vim +PluginInstall +qall
-
-python3 ~/.vim/bundle/YouCompleteMe/install.py --gocode-completer --clang-completer
+vim +PlugInstall +qall

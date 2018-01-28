@@ -93,43 +93,35 @@ endif
 
 "                                                                     <Plugins>
 "==============================================================================
-filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'VundleVim/Vundle.vim'
-
-"                                                               <Plugins|Ruby/>
-"------------------------------------------------------------------------------
-Plugin 'vim-ruby/vim-ruby'
-"Plugin 'tpope/vim-ragtag'
-"Plugin 'tpope/vim-endwise'
+call plug#begin('~/.vim/plugged')
 
 "                                                             <Plugins|Python/>
 "------------------------------------------------------------------------------
-" Plugin 'jmcantrell/vim-virtualenv'
-Plugin 'Vimjas/vim-python-pep8-indent'
-Plugin 'python_match.vim'
+" Plug 'jmcantrell/vim-virtualenv'
+Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'vim-scripts/python_match.vim'
 
 "                                                         <Plugins|JavaScript/>
 "------------------------------------------------------------------------------
-"Plugin 'pangloss/vim-javascript'
-Plugin 'othree/yajs.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+let g:jsx_ext_required = 0
+Plug 'prettier/vim-prettier'
 
 "                                                       <Plugins|Colorschemes/>
 "------------------------------------------------------------------------------
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'dracula/vim'
-Plugin 'morhetz/gruvbox'
+Plug 'altercation/vim-colors-solarized'
+Plug 'dracula/vim'
+Plug 'morhetz/gruvbox'
 
 "                                                              <Plugins|Tools/>
 "------------------------------------------------------------------------------
-Plugin 'tpope/vim-fugitive'
-Plugin 'Raimondi/delimitMate'
+Plug 'tpope/vim-fugitive'
+Plug 'Raimondi/delimitMate'
 autocmd FileType rust let b:delimitMate_quotes = "\""
 
-Plugin 'ctrlpvim/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_custom_ignore = {
       \ 'dir':  'build\|node_modules\|DS_Store\|git\|target',
       \ 'file': '\.pyc$'
@@ -140,16 +132,19 @@ let g:ctrlp_match_window = 'max:15'
 "nnoremap <C-j> :CtrlPBufTagAll<cr>
 nnoremap <C-j> :CtrlPBufTag<cr>
 
-Plugin 'rking/ag.vim'
-Plugin 'mhinz/vim-grepper'
+Plug 'rking/ag.vim'
+Plug 'mhinz/vim-grepper'
 
-Plugin 'Valloric/YouCompleteMe' 
+Plug 'Valloric/YouCompleteMe', {
+      \ 'do': 'python3 install.py --gocode-completer --js-completer'
+      \ }
 let g:ycm_auto_trigger = 0
 "let g:ycm_python_binary_path = '/usr/local/bin/python2'
 let g:ycm_python_binary_path = 'python'
 let g:ycm_show_diagnostics_ui = 0
 "let g:ycm_log_level = 'debug'
 
+Plug 'fatih/vim-go'
 "let $GOPATH='/Users/shmatov/Code/go'
 "let g:go_bin_path = expand("~/.gotools")
 "let g:go_highlight_functions = 1
@@ -160,7 +155,6 @@ let g:ycm_show_diagnostics_ui = 0
 "let g:go_fmt_autosave = 0
 "
 let g:go_fmt_command = "goimports"
-Plugin 'fatih/vim-go'
 
 " function! GoToDecl()
 "    if &ft == 'go'
@@ -171,7 +165,7 @@ Plugin 'fatih/vim-go'
 " endfunction
 " nnoremap <leader>d :call GoToDecl()<CR>
 
-"Plugin 'davidhalter/jedi-vim'
+"Plug 'davidhalter/jedi-vim'
 "let g:jedi#completions_enabled = 1
 "let g:jedi#show_call_signatures = 0
 "let g:jedi#documentation_command = "K"
@@ -180,18 +174,29 @@ Plugin 'fatih/vim-go'
 "let g:jedi#goto_assignments_command = "<leader>g"
 "let g:jedi#goto_definitions_command = "<leader>d"
 "let g:jedi#use_tabs_not_buffers = 0
+
 autocmd FileType python setlocal completeopt-=preview
 autocmd FileType go setlocal completeopt-=preview
 
-"Plugin 'w0rp/ale'
-"let g:ale_linters = { 'python': ['flake8'] }
+Plug 'w0rp/ale'
+let g:ale_linters = { 
+      \ 'python': ['flake8'], 
+      \ 'javascript': ['eslint'] 
+      \ }
+let g:ale_fixers = {
+\   'javascript': ['prettier', 'eslint'],
+\}
+let g:ale_fix_on_save = 1
+let g:ale_max_signs = 0
+let g:ale_lint_delay = 100
+
 "let g:ale_python_flake8_executable = 'python'   " or 'python' for Python 2
 "let g:ale_python_flake8_args = '-m flake8'
-"let g:ale_lint_on_save = 1
 "let g:ale_open_list = 1
 
-Plugin 'neomake/neomake'
-let g:neomake_python_enabled_makers = ['flake8']
+"Plug 'neomake/neomake'
+"let g:neomake_python_enabled_makers = ['flake8']
+"let g:neomake_javascript_enabled_makers = ['eslint']
 
 "let g:neomake_error_sign = {'text': 'E', 'texthl': 'NeomakeErrorSign'}
 "let g:neomake_warning_sign = {'text': 'W', 'texthl': 'NeomakeWarningSign'}
@@ -199,62 +204,40 @@ let g:neomake_python_enabled_makers = ['flake8']
 "let g:neomake_info_sign = {'text': 'I', 'texthl': 'NeomakeInfoSign'}
 let g:neomake_place_signs = 0
 let g:neomake_remove_invalid_entries = 1
+let g:neomake_open_list = 2
 
-let g:neomake_remote_maker = {
-    \ 'exe': './make_remote',
-    \ 'args': [],
-    \ 'append_file': 0,
-    \ 'errorformat': 
-      \ '%E%f:%l:%c: error: %m,' .
-      \ '%W%f:%l:%c: warning: %m,' .
-      \ '%f:%l:%c: note: %m,' .
-      \ '%f:%l:%c: %m',
-    \ }
+Plug 'scrooloose/nerdcommenter'
+Plug 'godlygeek/tabular'
 
-
-"Plugin 'scrooloose/syntastic'
-"let g:syntastic_mode_map = {
-"      \ "mode": "passive",
-"      \ "active_filetypes": [],
-"      \ "passive_filetypes": [] }
-"let g:syntastic_python_checkers = ['flake8']
-"let g:syntastic_python_flake8_args = "--ignore=E501"
-"let g:syntastic_go_checkers = ['go']
-"let g:syntastic_javascript_checkers = ['eslint']
-
-
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'godlygeek/tabular'
-
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 let NERDTreeIgnore = ['\.pyc$', '__pycache__']
 let NERDTreeWinSize = 35
 nmap <silent> <F2> :NERDTreeToggle<CR>
 imap <silent> <F2> <ESC>:NERDTreeToggle<CR>
 vmap <silent> <F2> <ESC>:NERDTreeToggle<CR>
 
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline_powerline_fonts = 0
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 
-Plugin 'jeetsukumaran/vim-buffergator'
+Plug 'jeetsukumaran/vim-buffergator'
 let g:buffergator_viewport_split_policy='T'
 let g:buffergator_autoexpand_on_split=0
 let g:buffergator_sort_regime="mru"
 nmap <silent> <F3> :BuffergatorToggle<CR>
 imap <silent> <F3> <ESC>:BuffergatorToggle<CR>
 vmap <silent> <F3> <ESC>:BuffergatorToggle<CR>
-Plugin 'Lokaltog/vim-easymotion'
+Plug 'Lokaltog/vim-easymotion'
 
-Plugin 'wting/rust.vim'
-Plugin 'cespare/vim-toml'
+Plug 'wting/rust.vim'
+Plug 'cespare/vim-toml'
+Plug 'tomlion/vim-solidity'
 
 
-call vundle#end()  
-filetype plugin indent on
+call plug#end()
 "                                                                    </Plugins>
 "==============================================================================
 
@@ -266,23 +249,18 @@ silent! colorscheme solarized
 " Leader
 let mapleader = " "
 
-" open configuration file
 nnoremap <leader>ec :edit $HOME/.vim/vimrc<CR>
-" Reload configuration file
 nnoremap <leader>rc :source $HOME/.vim/vimrc<CR>
 
-"nnoremap <leader>sc :SyntasticCheck<CR>
-"nnoremap <leader>sr :SyntasticReset<CR>
-nnoremap <leader>c :Neomake<CR>
+nnoremap <leader>m :Neomake<CR>
 nnoremap <leader>gi :call GoImports()<CR>
 
-nnoremap <leader>d :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>s :YcmCompleter GoTo<CR>
+"nnoremap <leader>s :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>d :YcmCompleter GoTo<CR>
 
 nnoremap <leader>h :set hls!<CR>
 nnoremap <leader>f :let @+ = expand("%@")<CR>
 
-" Get off my lawn
 nnoremap <Left> :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
