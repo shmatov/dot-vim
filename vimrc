@@ -107,13 +107,13 @@ Plug 'vim-scripts/python_match.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 let g:jsx_ext_required = 0
-Plug 'prettier/vim-prettier'
 
 "                                                       <Plugins|Colorschemes/>
 "------------------------------------------------------------------------------
 Plug 'altercation/vim-colors-solarized'
 Plug 'dracula/vim'
 Plug 'morhetz/gruvbox'
+Plug 'mhartington/oceanic-next'
 
 "                                                              <Plugins|Tools/>
 "------------------------------------------------------------------------------
@@ -186,7 +186,7 @@ let g:ale_linters = {
 let g:ale_fixers = {
 \   'javascript': ['prettier', 'eslint'],
 \}
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0
 let g:ale_max_signs = 0
 let g:ale_lint_delay = 100
 
@@ -249,17 +249,18 @@ silent! colorscheme solarized
 " Leader
 let mapleader = " "
 
-nnoremap <leader>ec :edit $HOME/.vim/vimrc<CR>
-nnoremap <leader>rc :source $HOME/.vim/vimrc<CR>
+nnoremap <leader>ce :edit $HOME/.vim/vimrc<CR>
+nnoremap <leader>cr :source $HOME/.vim/vimrc<CR>
 
-nnoremap <leader>m :Neomake<CR>
-nnoremap <leader>gi :call GoImports()<CR>
+"nnoremap <leader>m :Neomake<CR>
+"nnoremap <leader>gi :call GoImports()<CR>
 
 "nnoremap <leader>s :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>d :YcmCompleter GoTo<CR>
+nnoremap <leader>f :ALEFix<CR>
 
 nnoremap <leader>h :set hls!<CR>
-nnoremap <leader>f :let @+ = expand("%@")<CR>
+nnoremap <leader>gp :let @+ = expand("%@")<CR>
 
 nnoremap <Left> :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
